@@ -49,3 +49,19 @@ Key concepts:
 - **Learning rate** scales each tree's contribution — lower values require more trees but can generalize better
 - **`n_estimators`** controls the number of sequential trees (boosting stages)
 - Model performance evaluated using **R² score** on a held-out test set (80/20 split)
+
+## Regression Using Neural Network
+
+**Notebook**: [RegressionUsingNeuralNetwork.ipynb](RegressionUsingNeuralNetwork.ipynb)
+**Dataset**: [dataset/Advertising.csv](dataset/Advertising.csv)
+
+Explored regression with a feedforward neural network using PyTorch on the Advertising dataset. The goal was to predict sales from TV, radio, and newspaper ad spend.
+
+Pipeline:
+
+- Features (`TV`, `radio`, `newspaper`) scaled with `sklearn.preprocessing.scale` before training
+- Data converted to `torch.float` tensors for PyTorch compatibility
+- **Network architecture**: `Linear(3 → 100)` → `ReLU` → `Linear(100 → 1)`
+- **Loss**: `MSELoss`
+- **Optimizer**: Adam (`lr=0.0001`), trained for 10,000 iterations
+- Predictions detached from the computation graph and evaluated with **R² score** against the test set (80/20 split)
