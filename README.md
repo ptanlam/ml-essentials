@@ -2,6 +2,31 @@
 
 A personal learning repository for exploring machine learning fundamentals and essential concepts.
 
+## Linear Regression with Categorical Data
+
+**Notebook**: [RegressionUsingCategoricalData.ipynb](RegressionUsingCategoricalData.ipynb)
+**Dataset**: [dataset/diamonds.csv](dataset/diamonds.csv) → [processed_dataset/diamons_processed.csv](processed_dataset/diamons_processed.csv)
+
+Explored linear regression on the Diamonds dataset to predict `price` from a mix of numerical and categorical features (`cut`, `color`, `clarity`, `carat`, etc.).
+
+Preprocessing pipeline:
+
+- EDA with correlation heatmap, boxplots by `cut`/`color`, and a scatter plot of `carat` vs `price`
+- **Ordinal encoding** for `clarity` — mapped 8 grades (IF → I1) to integers 7–0 to preserve natural ordering
+- **One-hot encoding** for `cut` and `color` via `pd.get_dummies`
+- **Feature scaling** — `sklearn.preprocessing.scale` applied to the 6 numerical features (`carat`, `depth`, `table`, `x`, `y`, `z`); scaled values merged back into the dataframe
+- Dropped rows with NaN values before saving the processed dataset
+
+Modelling:
+
+- Trained `sklearn.linear_model.LinearRegression` with an 80/20 train/test split
+- Evaluated with **R² score** on both training and test sets
+
+Key concepts:
+
+- **Ordinal vs nominal encoding** — `clarity` has a meaningful order so it's label-encoded; `cut` and `color` are nominal so they're one-hot encoded
+- **Feature scaling before regression** — prevents features with large ranges from dominating the OLS solution
+
 ## Linear Regression with Numerical Data
 
 **Notebook**: [LinearRegressionWithNumericalData.ipynb](LinearRegressionWithNumericalData.ipynb)
