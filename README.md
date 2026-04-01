@@ -2,6 +2,26 @@
 
 A personal learning repository for exploring machine learning fundamentals and essential concepts.
 
+## Linear Regression with Numerical Data
+
+**Notebook**: [LinearRegressionWithNumericalData.ipynb](LinearRegressionWithNumericalData.ipynb)
+**Dataset**: [dataset/boston_data.csv](dataset/boston_data.csv)
+
+Explored linear regression on the Boston Housing dataset to predict median home values (`medv`) from numerical features (rooms, age, pupil-teacher ratio, etc.).
+
+Pipeline:
+
+- EDA with `seaborn.lmplot` to visualize relationships between individual features (`rm`, `age`, `ptratio`) and the target
+- Trained `sklearn.linear_model.LinearRegression` with an 80/20 train/test split
+- Evaluated with **R² score** on both training and test sets
+- Extended analysis with `statsmodels.OLS` to get full statistical summary (coefficients, p-values, confidence intervals)
+
+Key concepts:
+
+- **OLS (Ordinary Least Squares)** — minimizes the sum of squared residuals to find the best-fit hyperplane
+- **`sm.add_constant`** — adds an intercept term to the design matrix for the statsmodels OLS fit
+- **R² score** — measures proportion of variance in the target explained by the model
+
 ## Voting Classifier (Hard & Soft)
 
 **Notebook**: [VotingClassifier.ipynb](VotingClassifier.ipynb)
