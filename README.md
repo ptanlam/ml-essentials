@@ -2,6 +2,26 @@
 
 A personal learning repository for exploring machine learning fundamentals and essential concepts.
 
+## Multiple Types of Regression
+
+**Notebook**: [MultipleTypesOfRegression.ipynb](MultipleTypesOfRegression.ipynb)
+**Dataset**: [processed_dataset/diamons_processed.csv](processed_dataset/diamons_processed.csv)
+
+Compared four regression algorithms on the processed Diamonds dataset to predict `price`, using a shared `build_and_train_model` helper for consistent 80/20 splits and R² evaluation.
+
+Models implemented:
+
+- **Linear Regression** — standard OLS baseline
+- **Lasso** (`alpha=0.8`, `max_iter=10000`) — L1 regularization; drives less important feature weights to zero, performing implicit feature selection
+- **Ridge** (`alpha=0.9`) — L2 regularization; shrinks all coefficients evenly, handles multicollinearity better than OLS
+- **SGDRegressor** (`max_iter=2000`) — stochastic gradient descent; scales well to large datasets by updating weights on mini-batches
+
+Key concepts:
+
+- **L1 (Lasso) vs L2 (Ridge) regularization** — Lasso produces sparse models by zeroing out weak features; Ridge retains all features but shrinks them
+- **`alpha`** — regularization strength; higher values impose stronger penalties on large coefficients
+- **SGD** — approximates gradient descent iteratively, making it practical when full-batch optimization is too expensive
+
 ## Linear Regression with Categorical Data
 
 **Notebook**: [RegressionUsingCategoricalData.ipynb](RegressionUsingCategoricalData.ipynb)
