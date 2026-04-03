@@ -115,6 +115,47 @@ Key concepts:
 - **`n_estimators`** controls the number of sequential trees (boosting stages)
 - Model performance evaluated using **R² score** on a held-out test set (80/20 split)
 
+## Binary Classification on Numerical Data
+
+**Notebook**: [ClassificationBinaryNumericalDataset.ipynb](ClassificationBinaryNumericalDataset.ipynb)
+**Dataset**: [dataset/gender_voice_dataset.csv](dataset/gender_voice_dataset.csv)
+
+Explored binary classification using the Gender Voice dataset, predicting speaker gender from acoustic features (mean frequency, SD, median, IQR, skew, etc.).
+
+Pipeline:
+
+- **Label encoding** — target column (`label`) encoded with `LabelEncoder` (male/female → 0/1)
+- **Logistic Regression** with L2 penalty (`solver='liblinear'`) trained on an 80/20 split
+- Evaluated with **confusion matrix**, **accuracy**, **precision**, and **recall**
+
+Key concepts:
+
+- **Logistic Regression** — models the probability of a binary outcome using the sigmoid function; decision boundary is linear in feature space
+- **L2 penalty** — regularizes coefficients to prevent overfitting, equivalent to Ridge for classification
+- **Confusion matrix** — breaks down TP, TN, FP, FN to understand error types beyond raw accuracy
+- **Precision vs Recall** — precision measures correctness of positive predictions; recall measures coverage of actual positives
+
+## Clustering Using Unlabeled Data
+
+**Notebook**: [ClusteringUsingUnlabeledData.ipynb](ClusteringUsingUnlabeledData.ipynb)
+**Dataset**: [dataset/Mall_Customers.csv](dataset/Mall_Customers.csv)
+
+Explored unsupervised clustering with K-Means on the Mall Customers dataset, grouping customers by Annual Income and Spending Score.
+
+Pipeline:
+
+- Dropped categorical/demographic columns (`Gender`, `Age`) to keep only the two numerical features
+- Shuffled data with `sample(frac=1)` before fitting
+- Fit `KMeans` with `n_clusters=2` and `n_clusters=5`, visualizing cluster assignments and centroids with scatter plots
+- Evaluated cluster quality with **silhouette score** for both configurations
+
+Key concepts:
+
+- **K-Means** — partitions data into *k* clusters by iteratively assigning points to the nearest centroid and recomputing centroids until convergence
+- **Cluster centroids** — the mean position of all points in a cluster; `cluster_centers_` from scikit-learn
+- **Silhouette score** — measures how similar a point is to its own cluster vs. neighboring clusters; ranges from -1 to 1, higher is better
+- Comparing `k=2` vs `k=5` illustrates how choice of *k* affects cluster granularity and cohesion
+
 ## Regression Using Neural Network
 
 **Notebook**: [RegressionUsingNeuralNetwork.ipynb](RegressionUsingNeuralNetwork.ipynb)
