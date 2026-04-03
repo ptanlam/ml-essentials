@@ -135,6 +135,35 @@ Key concepts:
 - **Confusion matrix** — breaks down TP, TN, FP, FN to understand error types beyond raw accuracy
 - **Precision vs Recall** — precision measures correctness of positive predictions; recall measures coverage of actual positives
 
+## Clustering Using Labeled Data
+
+**Notebook**: [ClusteringUsingLabeledData.ipynb](ClusteringUsingLabeledData.ipynb)
+**Dataset**: [dataset/cars.csv](dataset/cars.csv)
+
+Explored K-Means clustering on the Cars dataset where ground-truth brand labels are available, enabling cluster quality evaluation beyond silhouette score.
+
+Pipeline:
+
+- Cleaned column names (stripped leading whitespace), coerced `cubicinches` and `weightlbs` to numeric, dropped NaN rows
+- **Label encoded** `brand` column for use as ground-truth labels in supervised metrics
+- Features used for clustering: `mpg`, `cubicinches`, `cylinders`, `hp`
+- Used the **elbow method** (plotting inertia for k=1–14) to identify the optimal number of clusters
+- Fit `KMeans(n_clusters=3)` and evaluated with five metrics
+
+Evaluation metrics:
+
+- **Silhouette score** — intra-cluster cohesion vs. inter-cluster separation (unsupervised)
+- **Homogeneity** — each cluster contains only members of a single class
+- **Completeness** — all members of a class are in the same cluster
+- **V-measure** — harmonic mean of homogeneity and completeness
+- **Adjusted Rand score** — similarity between predicted and true cluster assignments, corrected for chance
+- **Adjusted Mutual Information** — mutual info between cluster labels and ground truth, adjusted for chance
+
+Key concepts:
+
+- **Elbow method** — plot inertia (sum of squared distances to centroid) vs. k; the "elbow" indicates diminishing returns from adding more clusters
+- Having ground-truth labels unlocks supervised clustering metrics; without them, only unsupervised metrics like silhouette apply
+
 ## Clustering Using Unlabeled Data
 
 **Notebook**: [ClusteringUsingUnlabeledData.ipynb](ClusteringUsingUnlabeledData.ipynb)
